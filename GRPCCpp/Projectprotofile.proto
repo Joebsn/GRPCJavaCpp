@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.rpc.project";
+option java_outer_classname = "GrpcProjectProto";
+option objc_class_prefix = "RTG";
+
+package GrpcProject;
+
+
+service ProjectService
+{
+    rpc GetInformations(UserID) returns (Informations) {} //Given an ID it'll give us the information about the person
+    
+    rpc GetPeopleOfAge(UserAge) returns (stream Informations) {} //Get All people having specific age
+    
+    rpc GetSumOfAges(stream UserAge) returns (TotalAge) {} //Calculate the sum of all the ages
+
+    rpc GetUserAgesOfIdBiggerThanGivenID(stream UserID) returns (stream UserAge) {} //Giving stream of ID where 5 < ID < 15 for example, we'll get all the corresponding ages
+}
+
+message UserID
+{
+    int32 userid = 1;
+}
+
+message UserAge
+{
+    int32 age = 1;
+}
+
+message TotalAge
+{
+    int32 totalages = 1;
+}
+
+message Informations
+{
+    UserID userid = 1;
+    string name = 2;
+    UserAge age = 3;
+}
+
+
