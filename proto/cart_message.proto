@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package messagespackageexercice.exercice;
+
+option java_package = "servicespackagesexercice.exercice.project";
+option java_multiple_files = true;
+
+message Cart
+{
+  int32 books = 1;
+  int32 price = 2;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package messagespackageexercice.exercice;
+
+option java_package = "servicespackagesexercice.exercice.project";
+option java_multiple_files = true;
+
+message Book
+{
+  string name = 1;
+  string author = 2;
+  int32 price = 3;
+}
