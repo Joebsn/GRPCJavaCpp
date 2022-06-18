@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package messagespackageexercice.exercice;
+
+option java_package = "servicespackagesexercice.exercice.project";
+option java_multiple_files = true;
+
+import "loginrequest_message.proto";
+import "book_message.proto";
+import "apiresponse_message.proto";
+import "booksearch_message.proto";
+import "cart_message.proto";
+
+service UserService
+{
+  rpc login(LoginRequest) returns (APIResponse) {};
+  rpc searchByAuthor (BookSearch) returns (stream Book) {};
+  rpc totalCartValue (stream Book) returns (Cart){};
+  rpc liveCartValue (stream Book) returns (stream Cart) {};
+  rpc first (BookSearch) returns (Book) {};
+}
